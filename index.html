@@ -245,10 +245,29 @@
     <main>
         <section>
             <h2>About Me</h2>
-            <p style="color:#b2b8c6;">
-                Graduate of Southern Connecticut State University with a bachelor's in business administration.<br>
-                I design and build web applications that prioritize usability, efficiency, and modern user experience.
-            </p>
+            <div style="
+                background: var(--matte-card);
+                border-radius: var(--matte-radius-sm);
+                box-shadow: 0 2px 12px 0 rgba(0,0,0,0.13);
+                border: 1px solid var(--matte-border);
+                padding: 1.2rem 1rem;
+                color: #b2b8c6;
+                text-align: center;
+                font-size: 1.08rem;
+                max-width: 95%;
+                margin: 0 auto 1.5rem auto;
+            ">
+                <div style="font-weight:600; color:var(--matte-accent); margin-bottom:0.5rem;">
+                    Graduate of Southern Connecticut State University
+                </div>
+                <div style="margin-bottom:0.5rem;">
+                    Bachelor’s in Business Administration
+                </div>
+                <div>
+                    I design and build web applications focused on usability, efficiency, and a modern user experience.<br>
+                    Currently learning Python &amp; SQL.
+                </div>
+            </div>
         </section>
 
         <section>
@@ -263,7 +282,7 @@
                     <div class="project-desc">
                         Save and sync notes and links across devices. Manage open tabs by saving links and notes.
                     </div>
-                    <a href="https://github.com/Milmoney/NoteLink" target="_blank" class="project-link">View Project</a>
+                    <a href="https://chromewebstore.google.com/detail/notelink/gjlnlpmlhfnndepjndcccndbgaffejmp" target="_blank" class="project-link">View Project</a>
                 </div>
                 <div class="project-card">
                     <div class="project-header">
@@ -274,7 +293,7 @@
                     <div class="project-desc">
                         Convert Microsoft Word documents (.doc/.docx) to plain text files (.txt) in your browser.
                     </div>
-                    <a href="https://github.com/Milmoney/doc-to-txt-converter" target="_blank" class="project-link">View Project</a>
+                    <a href="https://tangerine-alfajores-70fe78.netlify.app/" target="_blank" class="project-link">View Project</a>
                 </div>
             </div>
         </section>
@@ -332,8 +351,26 @@
         <section>
             <h2>Contact</h2>
             <div class="contact-list">
-                <!--<span>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></span>-->
-                <span>LinkedIn: <a href="https://www.linkedin.com/in/jason-milord-31791a21b" target="_blank">jason-milord-31791a21b</a></span>
+                <!-- <span>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></span> -->
+                <a href="https://www.linkedin.com/in/jason-milord-31791a21b" target="_blank" style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: var(--matte-accent);
+                    background: var(--matte-card);
+                    border-radius: 8px;
+                    padding: 0.5em 1.1em;
+                    font-weight: 600;
+                    text-decoration: none;
+                    box-shadow: 0 2px 8px #1a1b1f22;
+                    transition: background 0.18s, color 0.18s;
+                ">
+                    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="7" fill="#0077B5"/>
+                        <path d="M10.666 13.333h3.111v1.333h.045c.433-.82 1.492-1.684 3.073-1.684 3.287 0 3.89 2.164 3.89 4.98v5.038h-3.222v-4.471c0-1.066-.019-2.438-1.486-2.438-1.487 0-1.714 1.162-1.714 2.364v4.545h-3.222v-9.667zm-2.667 0h3.222v9.667h-3.222v-9.667zm1.611-4.833c1.034 0 1.872.838 1.872 1.872 0 1.033-.838 1.872-1.872 1.872-1.033 0-1.872-.839-1.872-1.872 0-1.034.839-1.872 1.872-1.872z" fill="#fff"/>
+                    </svg>
+                    LinkedIn
+                </a>
             </div>
         </section>
     </main>
