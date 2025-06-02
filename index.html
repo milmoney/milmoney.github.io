@@ -5,134 +5,241 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jason Milord - Portfolio</title>
     <style>
-        /* iOS-inspired modern look */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background: #f9f9fb;
-            color: #222;
+        :root {
+            --matte-bg: #23242a;
+            --matte-panel: #2e2f36;
+            --matte-card: #35363f;
+            --matte-border: #44454e;
+            --matte-accent: #6ec1e4;
+            --matte-accent2: #b2b8c6;
+            --matte-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+            --matte-radius: 18px;
+            --matte-radius-sm: 10px;
+        }
+        html, body {
+            background: var(--matte-bg);
+            color: #f2f2f2;
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            max-width: 600px;
+            min-height: 100vh;
+        }
+        body {
+            max-width: 700px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
         header {
-            background: #fff;
-            border-bottom: 1px solid #e5e5ea;
+            background: var(--matte-panel);
+            border-bottom: 1px solid var(--matte-border);
             text-align: center;
-            padding: 2rem 1rem 1rem 1rem;
-            border-radius: 0 0 24px 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            padding: 2.2rem 1rem 1.2rem 1rem;
+            border-radius: 0 0 var(--matte-radius) var(--matte-radius);
+            box-shadow: var(--matte-shadow);
+            margin-bottom: 2rem;
         }
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             margin: 0 0 0.5rem 0;
             font-weight: 700;
             letter-spacing: -1px;
+            color: var(--matte-accent);
+            text-shadow: 0 2px 8px #1a1b1f;
         }
         h2 {
-            font-size: 1.3rem;
-            margin: 2.5rem 0 1rem 0;
+            font-size: 1.25rem;
+            margin: 2.2rem 0 1rem 0;
             font-weight: 600;
-            color: #007aff;
+            color: var(--matte-accent2);
+            letter-spacing: 0.5px;
         }
         h3 {
-            font-size: 1.1rem;
+            font-size: 1.08rem;
             margin: 0.5rem 0 0.5rem 0;
             font-weight: 500;
+            color: var(--matte-accent);
         }
         main {
-            padding: 0 1.2rem 2rem 1.2rem;
-        }
-        section {
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-            margin-bottom: 1.5rem;
-            padding: 1.5rem 1.2rem;
-        }
-        .project {
-            margin-bottom: 2.5rem;
-            border-bottom: 1px solid #f2f2f7;
             padding-bottom: 2rem;
         }
-        .project:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        section {
+            background: var(--matte-panel);
+            border-radius: var(--matte-radius);
+            box-shadow: var(--matte-shadow);
+            margin-bottom: 1.5rem;
+            padding: 1.3rem 1.1rem;
+            border: 1px solid var(--matte-border);
         }
-        .project img {
-            border-radius: 12px;
-            background: #f2f2f7;
+        /* Projects grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
         }
-        .project h3 {
-            display: inline-block;
-            margin-left: 12px;
-            vertical-align: middle;
+        @media (max-width: 700px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
-        .project span {
-            font-size: 0.9em;
-            color: #8e8e93;
+        .project-card {
+            background: var(--matte-card);
+            border-radius: var(--matte-radius-sm);
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.13);
+            border: 1px solid var(--matte-border);
+            padding: 1rem 1rem 0.7rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 320px;
+            transition: transform 0.13s, box-shadow 0.13s;
         }
-        .project strong {
-            display: block;
-            margin: 1rem 0 0.3rem 0;
-            color: #222;
+        .project-card:hover {
+            transform: translateY(-4px) scale(1.025);
+            box-shadow: 0 8px 32px 0 rgba(110,193,228,0.13);
+            border-color: var(--matte-accent);
+        }
+        .project-header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .project-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: #23242a;
+            margin-right: 0.7rem;
+            box-shadow: 0 2px 8px #1a1b1f33;
+            object-fit: cover;
+        }
+        .project-title {
+            font-size: 1.08rem;
             font-weight: 600;
+            color: var(--matte-accent);
         }
-        .project p, .project ul {
-            margin: 0.2rem 0 0.7rem 0;
+        .project-type {
+            font-size: 0.92em;
+            color: var(--matte-accent2);
+            margin-left: 0.5em;
+        }
+        .project-media {
+            width: 100%;
+            margin: 0.8rem 0 0.5rem 0;
+            border-radius: 8px;
+            background: #23242a;
+            box-shadow: 0 2px 8px #1a1b1f22;
+            object-fit: cover;
+        }
+        .project-desc {
             font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 0.7rem;
         }
-        .project ul {
+        .project-list {
+            font-size: 0.98rem;
+            color: #b2b8c6;
+            margin-bottom: 0.7rem;
             padding-left: 1.2rem;
         }
-        .project a {
-            display: inline-block;
-            margin-top: 0.7rem;
+        .project-link {
+            margin-top: auto;
             color: #fff;
-            background: #007aff;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
+            background: linear-gradient(90deg, var(--matte-accent) 60%, #4e8bb7 100%);
+            padding: 0.45rem 1.1rem;
+            border-radius: 7px;
             text-decoration: none;
             font-weight: 500;
-            transition: background 0.2s;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px #1a1b1f33;
+            transition: background 0.18s, box-shadow 0.18s;
+            border: none;
+            outline: none;
         }
-        .project a:hover {
-            background: #005ecb;
+        .project-link:hover {
+            background: linear-gradient(90deg, #4e8bb7 0%, var(--matte-accent) 100%);
+            box-shadow: 0 4px 16px #6ec1e455;
         }
-        .skills {
+        /* Skills showcase */
+        .skills-showcase {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 0.7rem;
+            gap: 1.1rem;
+            justify-content: center;
+            margin-top: 1.2rem;
         }
-        .skill {
-            background: #e5e5ea;
-            color: #222;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.98rem;
-            font-weight: 500;
+        .skill-badge {
+            background: linear-gradient(120deg, #35363f 60%, #23242a 100%);
+            color: var(--matte-accent);
+            border: 1.5px solid var(--matte-accent2);
+            border-radius: 50px;
+            padding: 0.7em 1.5em;
+            font-size: 1.08rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px #1a1b1f22;
+            position: relative;
+            overflow: hidden;
+            transition: border 0.18s, color 0.18s, background 0.18s;
         }
-        ul {
-            list-style: none;
-            padding: 0;
+        .skill-badge:hover {
+            border-color: var(--matte-accent);
+            color: #fff;
+            background: linear-gradient(120deg, var(--matte-accent) 60%, #35363f 100%);
         }
-        li {
-            margin-bottom: 0.5rem;
+        .skill-badge::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
+            background: rgba(110,193,228,0.13);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+            z-index: 0;
+        }
+        .skill-badge:hover::after {
+            width: 180%;
+            height: 180%;
+        }
+        /* Contact */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-top: 1.2rem;
+        }
+        .contact-list a {
+            color: var(--matte-accent);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .contact-list a:hover {
+            color: #fff;
+            text-decoration: underline;
         }
         footer {
             text-align: center;
-            color: #aaa;
-            font-size: 0.95rem;
+            color: #b2b8c6;
+            font-size: 0.98rem;
             padding: 2rem 0 1rem 0;
+            letter-spacing: 0.2px;
         }
-        @media (max-width: 600px) {
-            body, main {
-                padding: 0;
+        /* Responsive tweaks */
+        @media (max-width: 500px) {
+            body {
                 max-width: 100vw;
+                padding: 0 0.2rem;
             }
             section {
-                padding: 1.2rem 0.7rem;
+                padding: 1rem 0.3rem;
+            }
+            .project-card {
+                min-height: 0;
+                padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+            }
+            .skills-showcase {
+                gap: 0.5rem;
             }
         }
     </style>
@@ -140,72 +247,80 @@
 <body>
     <header>
         <h1>Jason Milord</h1>
-        <p>Web Developer</p>
+        <p style="color:var(--matte-accent2);margin:0;font-size:1.1rem;">Web Developer</p>
     </header>
 
     <main>
         <section>
             <h2>About Me</h2>
-            <p>I build web applications and tools focused on usability and efficiency. My background is in Business Administration and AI.</p>
+            <p style="color:#b2b8c6;">I create web applications and tools with a focus on usability and efficiency. Background in Business Administration and AI.</p>
         </section>
 
         <section>
             <h2>Projects</h2>
-            <div class="project">
-                <img src="images/notelink-logo.png" alt="NoteLink Logo" style="width:48px;height:48px;vertical-align:middle;">
-                <h3>NoteLink <span>(Extension)</span></h3>
-                <div>
-                    <img src="images/notelink-screenshot.png" alt="NoteLink Screenshot" style="width:100%;max-width:400px;margin:10px 0;">
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="images/notelink-logo.png" alt="NoteLink Logo" class="project-logo">
+                        <span class="project-title">NoteLink</span>
+                        <span class="project-type">(Extension)</span>
+                    </div>
+                    <img src="images/notelink-screenshot.png" alt="NoteLink Screenshot" class="project-media">
+                    <div class="project-desc">
+                        Save and sync notes and links across devices.<br>
+                        Manage open tabs by saving links and notes. Close tabs without losing information.
+                    </div>
+                    <ul class="project-list">
+                        <li>Quickly save links and notes</li>
+                        <li>Sync across devices</li>
+                        <li>Useful for research and collecting resources</li>
+                    </ul>
+                    <a href="https://github.com/Milmoney/NoteLink" target="_blank" class="project-link">View Project</a>
                 </div>
-                <strong>Overview</strong>
-                <p>
-                    Save and sync notes and links across devices.<br>
-                    NoteLink helps manage open tabs by letting you quickly save links and notes. Close tabs without losing information. Useful for research, study, or collecting resources.
-                </p>
-                <em>Loading... Your digital memory assistant.</em>
-                <div>
-                    <a href="https://github.com/Milmoney/NoteLink" target="_blank">View Project</a>
-                </div>
-            </div>
-            <div class="project">
-                <img src="images/doc2txt-icon.png" alt="DOC to TXT Converter Icon" style="width:48px;height:48px;vertical-align:middle;">
-                <h3>DOC to TXT Converter <span>(Web App)</span></h3>
-                <div>
-                    <img src="images/doc2txt-screenshot.png" alt="DOC to TXT Converter Screenshot" style="width:100%;max-width:400px;margin:10px 0;">
-                </div>
-                <strong>Overview</strong>
-                <p>
-                    Convert Microsoft Word documents (.doc/.docx) to plain text files (.txt) in your browser.
-                </p>
-                <ul>
-                    <li>Upload or drag a .doc or .docx file (up to 10MB).</li>
-                    <li>All processing is local—no files are uploaded to a server.</li>
-                    <li>Converted text appears instantly for copy or download.</li>
-                </ul>
-                <div>
-                    <a href="https://github.com/Milmoney/doc-to-txt-converter" target="_blank">View Project</a>
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="images/doc2txt-icon.png" alt="DOC to TXT Converter Icon" class="project-logo">
+                        <span class="project-title">DOC to TXT Converter</span>
+                        <span class="project-type">(Web App)</span>
+                    </div>
+                    <img src="images/doc2txt-screenshot.png" alt="DOC to TXT Converter Screenshot" class="project-media">
+                    <div class="project-desc">
+                        Convert Microsoft Word documents (.doc/.docx) to plain text files (.txt) in your browser.
+                    </div>
+                    <ul class="project-list">
+                        <li>Upload or drag a .doc or .docx file (up to 10MB)</li>
+                        <li>All processing is local</li>
+                        <li>Converted text appears instantly</li>
+                    </ul>
+                    <a href="https://github.com/Milmoney/doc-to-txt-converter" target="_blank" class="project-link">View Project</a>
                 </div>
             </div>
         </section>
 
         <section>
             <h2>Skills</h2>
-            <div class="skills">
-                <span class="skill">HTML</span>
-                <span class="skill">CSS</span>
-                <span class="skill">JavaScript</span>
-                <span class="skill">React</span>
-                <span class="skill">Node.js</span>
+            <div class="skills-showcase">
+                <span class="skill-badge">HTML5</span>
+                <span class="skill-badge">CSS3</span>
+                <span class="skill-badge">JavaScript (ES6+)</span>
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">REST APIs</span>
+                <span class="skill-badge">UI/UX</span>
+                <span class="skill-badge">Automation</span>
+                <span class="skill-badge">AI Integration</span>
+                <span class="skill-badge">Linux</span>
+                <span class="skill-badge">Git</span>
             </div>
         </section>
 
         <section>
             <h2>Contact</h2>
-            <ul>
-                <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">Your LinkedIn</a></li>
-                <li>GitHub: <a href="https://github.com/Milmoney">Your GitHub</a></li>
-            </ul>
+            <div class="contact-list">
+                <span>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></span>
+                <span>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">Your LinkedIn</a></span>
+                <span>GitHub: <a href="https://github.com/Milmoney">Your GitHub</a></span>
+            </div>
         </section>
     </main>
 
